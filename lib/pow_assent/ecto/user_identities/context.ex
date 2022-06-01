@@ -156,6 +156,8 @@ defmodule PowAssent.Ecto.UserIdentities.Context do
   def get_user_by_email(email, config) do
     opts = repo_opts(config, [:prefix])
 
+    IO.puts("\n~> get_user_by_email with email (#{email})\n")
+
     config
     |> user!()
     |> where([u], u.email == ^email)
