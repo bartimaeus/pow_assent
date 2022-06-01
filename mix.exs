@@ -1,13 +1,13 @@
 defmodule PowAssent.MixProject do
   use Mix.Project
 
-  @version "0.4.12"
+  @version "0.4.13"
 
   def project do
     [
       app: :pow_assent,
       version: @version,
-      elixir: "~> 1.7",
+      elixir: "~> 1.11",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       compilers: [:phoenix] ++ Mix.compilers(),
@@ -31,8 +31,8 @@ defmodule PowAssent.MixProject do
 
   defp deps do
     [
-      {:pow, git: "https://github.com/danschultzer/pow"},
-      {:assent, "~> 0.1.2"},
+      {:pow, "~> 1.0.27"},
+      {:assent, "~> 0.1.2 or ~> 0.2.0"},
 
       {:ecto, "~> 2.2 or ~> 3.0"},
       {:phoenix, ">= 1.3.0 and < 1.7.0"},
@@ -43,13 +43,10 @@ defmodule PowAssent.MixProject do
       {:credo, "~> 1.1", only: [:dev, :test]},
       {:jason, "~> 1.0", only: [:dev, :test]},
 
-      {:ex_doc, "~> 0.21", only: :dev},
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
 
       {:ecto_sql, "~> 3.1", only: :test},
       {:postgrex, "~> 0.14", only: :test},
-      {:cowboy, "~> 2.8", only: :test, override: true},
-      {:cowlib, "~> 2.9", only: :test, override: true},
-      {:ranch, "~> 1.7", only: :test, override: true},
       {:bypass, "~> 2.0", only: :test}
     ]
   end
@@ -59,7 +56,7 @@ defmodule PowAssent.MixProject do
 
   defp package do
     [
-      maintainers: ["Dan Shultzer"],
+      maintainers: ["Dan Schultzer"],
       licenses: ["MIT"],
       links: %{
         "GitHub" => "https://github.com/pow-auth/pow_assent",
